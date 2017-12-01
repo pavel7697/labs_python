@@ -1,0 +1,2 @@
+{% extends 'home.html' %}
+{% block nasled %}<li class="list-group-item" style="font-size: 30px; line-height: 1.3; "><a href="{% url 'order_url' order.id %}" style="color: blue;">{{ order.title }}</a></li>{% endblock %}

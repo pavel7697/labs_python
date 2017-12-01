@@ -1,0 +1,8 @@
+body{
+    background-color: NavajoWhite;
+}
+.list-group-item{
+    background-color: SandyBrown;
+    border-color: SandyBrown;
+    font-size: 50px;
+}

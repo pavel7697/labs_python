@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% for teacher in teachers %}
+        <div class="teacher-body" style="margin: 20px">
+                <h2>{{teacher.second_name}} {{ teacher.name }} {{ teacher.third_name }}</h2>
+{#                <h1>{{ teacher }}</h1>#}
+                <p>{{teacher.mail}}</p>
+                <p>{{ teacher.phone }}</p>
+        </div>
+        {% empty %}
+        Список пуст
+    {% endfor %}
+{% endblock %}

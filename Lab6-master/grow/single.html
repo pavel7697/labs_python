@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+        {% for pul in pulpits %}
+        <div class="pulpit-body" style="margin: 20px">
+                <h2>{{pul.name}}</h2>
+{#                <h1>{{ teacher }}</h1>#}
+                <p>{{pul.year}}</p>
+        </div>
+        {% empty %}
+        Список пуст
+    {% endfor %}
+
+{% endblock %}

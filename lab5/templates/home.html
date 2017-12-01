@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static "css/S1.css" %}" >
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+</head>
+<body>
+<!-- Simple header with scrollable tabs. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title">Заказы</span>
+    </div>
+    <!-- Tabs -->
+    <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+      <a href="#scroll-tab-1" class="mdl-layout__tab is-active">Заказы</a>
+      <a href="#scroll-tab-2" class="mdl-layout__tab">Переменная</a>
+      <a href="#scroll-tab-3" class="mdl-layout__tab">@</a>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">
+        <a href="http://github.com/pavel7697"><img src="https://avatars3.githubusercontent.com/u/31769424?s=400&v=4" width="50"
+    height="50"></a>
+        <a href="http://github.com/pavel7697" style="margin-left:25px;">GitHub</a>
+    </span>
+  </div>
+  <main class="mdl-layout__content">
+        <section class="mdl-layout__tab-panel is-active" id="scroll-tab-1">
+          <div class="page-content">
+              <!-- Your content goes here -->
+              <p class="sss2" style="margin: 30px;" >
+                  <style>
+                    body {font-size: 30px;
+                                }
+                    </style>
+
+                    <ul class="list-group">
+                                {% for order in orders %}
+                                        {% block nasled %}{% endblock %}
+
+
+                                {% empty %}
+                                    <li>пустой cписок</li>
+                                {% endfor %}
+
+                    </ul>
+              <!--<nav class="chapter-toc">-->
+            <!--<h1>Contents</h1>-->
+            <!--<ul>-->
+
+                <!--<li><a class="gweb-smoothscroll-control qp-ui" data-qp-ui="{ 'SmoothScroll': {} }" href="#lists-usage" data-qp-ui-data-id="qp:1">Usage</a></li>-->
+
+                <!--<li><a class="gweb-smoothscroll-control qp-ui" data-qp-ui="{ 'SmoothScroll': {} }" href="#lists-behavior" data-qp-ui-data-id="qp:2">Behavior</a></li>-->
+
+                <!--<li><a class="gweb-smoothscroll-control qp-ui" data-qp-ui="{ 'SmoothScroll': {} }" href="#lists-content" data-qp-ui-data-id="qp:3">Content</a></li>-->
+
+                <!--<li><a class="gweb-smoothscroll-control qp-ui" data-qp-ui="{ 'SmoothScroll': {} }" href="#lists-actions" data-qp-ui-data-id="qp:4">Actions</a></li>-->
+
+                <!--<li><a class="gweb-smoothscroll-control qp-ui" data-qp-ui="{ 'SmoothScroll': {} }" href="#lists-specs" data-qp-ui-data-id="qp:5">Specs</a></li>-->
+
+            <!--</ul>-->
+          <!--</nav>-->
+                              </p>
+          </div>
+        </section>
+        <section class="mdl-layout__tab-panel" id="scroll-tab-2">
+          <div class="page-content">
+              <!-- Your content goes here -->
+              <p class="sss2" style="margin: 30px;">
+                  <li class="list-group-item"><a href="http://127.0.0.1:8000/pvar" style="color: blue;">Переменная</a></li>
+              </p>
+          </div>
+        </section>
+        <section class="mdl-layout__tab-panel" id="scroll-tab-3">
+          <div class="page-content">
+              <!-- Your content goes here -->
+              <p class="sss2" style="margin: 30px;">
+                  <a href="https://ru.wikipedia.org/wiki/%D0%A1%D0%BE%D0%B1%D0%B0%D0%BA%D0%B0"><img src="http://s.picture-russia.ru/wpic/m/2/c/2c6f205dc4cdbc6985bfdeee59fc335f.jpg"></a><br />
+              </p>
+          </div>
+        </section>
+  </main>
+</div>
+</body>
+</html>
