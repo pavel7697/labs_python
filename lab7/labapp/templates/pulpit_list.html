@@ -1,0 +1,30 @@
+{% extends "test.html" %}
+{% block title %}Кафедры{% endblock %}
+{% block active %}
+     <li><a href="{% url 'teacher_list'%}">Преподаватели</a></li>
+     <li class="active"><a href="{% url 'pulpit_list'%}">Кафедры</a></li>
+{% endblock %}
+{% block main_block %}
+{% for pulpit in pulpits %}
+         <div class="col s12 m7" style="margin: 10px; width: 40%">
+    <h2 class="header"></h2>
+    <div class="card horizontal">
+      <div class="card-image">
+        <img src="https://lorempixel.com/100/190/nature/6">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+            <p style="font-size: 30px">Название: {{ pulpit.name }}</p>
+            <p style="font-size: 30px">Год основания: {{ pulpit.year }}</p>
+        </div>
+        <div class="card-action">
+        </div>
+      </div>
+    </div>
+  </div>
+{%  empty %}
+    <div class="main_block_elem">
+        <h2>Не найдено ни одной кафедры :(</h2>
+    </div>
+{% endfor %}
+{% endblock %}

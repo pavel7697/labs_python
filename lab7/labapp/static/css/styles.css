@@ -1,0 +1,32 @@
+/*@import colors_palete;*/
+body {
+	background-color: #c9d5f5;
+}
+.col-sm-3 control-label {
+	color: #000000;
+	font-size: 14pt;
+}
+.navbar-inverse {
+	background-color: coral;
+	border-color: #e86600;
+}
+.navbar-inverse .navbar-brand {
+ 	color: #ffd373;
+}
+
+.btn{
+	background-color: wheat;
+	border-color: black;
+	color: black;
+	;
+}
+
+.btn:hover{
+	background-color: coral;
+	border-color: black;
+	color: black;
+	;
+}
+
+
+

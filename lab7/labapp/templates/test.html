@@ -1,0 +1,80 @@
+ <!DOCTYPE html>
+  <html>
+    <head>
+        {% load static %}
+        <title>{% block title %}МГТУ{% endblock %}</title>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+        <link href="{% static 'css/materialize.css' %}" rel="stylesheet">
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <body>
+{#<div class="row">#}
+{#    <div class="col s12">#}
+{#      <ul class="tabs">#}
+{#        <li class="tab col s3"><a href="#test1">Test 1</a></li>#}
+{#        <li class="tab col s3"><a class="active" href="#test2">Test 2</a></li>#}
+{#        <li class="tab col s3 disabled"><a href="#test3">Disabled Tab</a></li>#}
+{#        <li class="tab col s3"><a href="#test4">Test 4</a></li>#}
+{#      </ul>#}
+{#    </div>#}
+{#    <div id="test1" class="col s12">Test 1</div>#}
+{#    <div id="test2" class="col s12">Test 2</div>#}
+{#    <div id="test3" class="col s12">Test 3</div>#}
+{#    <div id="test4" class="col s12">Test 4</div>#}
+{#  </div>#}
+
+  <nav>
+        <div class="nav-wrapper" style="background-color: #cc66ff">
+          <a href="{% url 'index' %}" class="brand-logo center">МГТУ им Н.Э.Баумана</a>
+            {% if user.is_authenticated %}
+                <a class="brand-logo right">
+{#                    <img src={% static "img/icon.jpg" %} alt="" class="circle responsive-img" style="max-width: 12%; margin-top: 10px">#}
+                    <a class="brand-logo right" style="margin-right: 70px">{{ user.username }}</a></a>
+          <ul class="left hide-on-med-and-down">{% block active %}
+            <li><a href="{% url 'teacher_list'%}">Преподаватели</a></li>
+            <li><a href="{% url 'pulpit_list'%}">Кафедры</a></li>{% endblock %}
+          </ul>
+
+             <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+                 <li><a href="{% url 'logout' %}" >Выйти</a></li>
+             </ul>
+        </div>
+            {% else %}
+                             <ul id="nav-mobile" class="right hide-on-med-and-down">
+                                 <li><a href="{% url 'authorization' %}">Войти</a></li>
+                                 <li><a href="{% url 'registration_user' %}">Зарегистрироваться</a></li>
+                             </ul>
+            {% endif %}
+  </nav>
+{% block main_block %}
+    {% if not user.is_authenticated %}
+         <p class="flow-text" style="margin-left: 12px">Зарегистрируйтесь или войдите в систему</p>
+        {% else %}
+        <p class="flow-text" style="margin-left: 12px">Свежие новости</p>
+              {% for a in mass %}
+      <div class="col s12 m5" style="margin-left: 12px; width: 60%; ">
+        <div class="card-panel teal">
+          <span class="white-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </span>
+        </div>
+      </div>
+    </div>
+              {% endfor %}
+    {% endif %}
+{% endblock %}
+
+      <!--Import jQuery before materialize.js-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.js"></script>
+      {% load static %}
+{#      <script type="text/javascript" src="{% js/jquery-3.2.1.js %}"></script>#}
+      <script type="text/javascript" src={% static "js/materialize.min.js" %}>
+      </script>
+    </body>
+  </html>

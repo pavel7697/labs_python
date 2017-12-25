@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Построитель графиков</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+    <style>
+        body{
+            margin-left: 0px;
+            margin-top: 0px;
+            background-color: wheat;
+        }
+        #sobaka {
+                 top: 82px; /* Расстояние от верхнего края */
+    left: 170px; /* Расстояние от левого края */
+    bottom: 0; right: 0;
+        }
+
+    </style>
+</head>
+<body>
+
+<h1 style="margin-left: 0px; margin-top: 0px; background-color: coral; font-family: Verdana; text-align: center"; >Построитель графиков</h1>
+<div style="margin-left: 10px">
+    <div>Границы отображения</div>
+    <input type="text" class="from" size ="10" value="-10" style="text-align: center"></input> | <input type="text" class="to" size ="10" value="10" style="text-align: center"></input><br>
+    Введите функцию<br>
+    <input type="text" class="fun" style="text-align: center"></input> <br>
+    <label><input type="checkbox" id="iddd" />Осциллограф?</label><br>
+    <button style="color: red; margin-top: 10px; height: 30px">Построить график</button><br>
+    <div class="plot1" style="width: 400px; height: 200px; margin-top: 5px"></div>
+    <div style=""></div><img src="http://s.picture-russia.ru/wpic/l/2/c/2ccaea7b983f9e5076b9b769b80ffe55.jpg" style="width: 400px; height: 550px; top: 50px; /* Расстояние от верхнего края */
+    left: 500px; position: absolute;/* Расстояние от левого края */
+    bottom: 0; right: 0"></div>
+</div>
+
+</body>
+</html>
