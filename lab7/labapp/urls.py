@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^registration_user/$',views.registration_user, name='registration_user'),
     url(r'^teachers/$',views.TeacherList.as_view(),name='teacher_list'),
     url(r'^pulpit/$',views.PulpitList.as_view(),name='pulpit_list'),
+    url(r'^graph/$',views.graph,name='graph'),
     # url(r'^reviews/$',views.ReviewList.as_view(),name='review_list'),
     url(r'^$', views.index, name='index'),
 ]

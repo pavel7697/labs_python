@@ -37,8 +37,9 @@
 {#                    <img src={% static "img/icon.jpg" %} alt="" class="circle responsive-img" style="max-width: 12%; margin-top: 10px">#}
                     <a class="brand-logo right" style="margin-right: 70px">{{ user.username }}</a></a>
           <ul class="left hide-on-med-and-down">{% block active %}
-            <li><a href="{% url 'teacher_list'%}">Преподаватели</a></li>
-            <li><a href="{% url 'pulpit_list'%}">Кафедры</a></li>{% endblock %}
+              <li><a href="{% url 'teacher_list'%}">Преподаватели</a></li>
+              <li><a href="{% url 'pulpit_list'%}">Кафедры</a></li>
+              <li><a href="{% url 'graph'%}">График</a></li>{% endblock %}
           </ul>
 
              <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -59,13 +60,19 @@
         {% else %}
         <p class="flow-text" style="margin-left: 12px">Свежие новости</p>
               {% for a in mass %}
-      <div class="col s12 m5" style="margin-left: 12px; width: 60%; ">
-        <div class="card-panel teal">
-          <span class="white-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </span>
-        </div>
-      </div>
-    </div>
+{#      <div class="col s12 m5" style="margin-left: 12px; width: 60%; ">#}
+{#        <div class="card-panel teal">#}
+{#          <span class="white-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.#}
+{#          </span>#}
+{#        </div>#}
+{#      </div>#}
+{#    </div>#}
+                  <ul class="collapsible popout" data-collapsible="accordion" style="width: 60%; margin-left: 1%">
+    <li>
+      <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+    </li>
+  </ul>
               {% endfor %}
     {% endif %}
 {% endblock %}
@@ -74,7 +81,10 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.js"></script>
       {% load static %}
 {#      <script type="text/javascript" src="{% js/jquery-3.2.1.js %}"></script>#}
-      <script type="text/javascript" src={% static "js/materialize.min.js" %}>
+      <script type="text/javascript" src={% static "js/materialize.min.js" %}> $(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
       </script>
+    <script type="text/javascript" src={% static "js/index.js" %}></script>
     </body>
   </html>

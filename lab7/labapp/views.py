@@ -155,8 +155,10 @@ class AutorizationForm(forms.Form):
     pass
 
 def index(request):
-    mass = [i * i for i in range(1, 10)]
+    mass = [ i for i in range(1, 10)]
     return render(request, 'test.html', {'mass': mass})
+def graph(request):
+    return render(request,'index(1).html')
 
 
 
