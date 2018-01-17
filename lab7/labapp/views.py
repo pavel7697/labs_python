@@ -207,7 +207,7 @@ class TeacherAddForm(forms.ModelForm):
     description=forms.CharField(label='Информация', required=False)
     class Meta:
         model=models.Teacher
-        fields = ('name', 'second_name','third_name', 'phone', 'mail', 'img')
+        fields = ('name', 'second_name','third_name', 'phone', 'mail', 'img', 'description')
 
 
 def add_teacher(request):
