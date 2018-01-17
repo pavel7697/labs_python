@@ -61,21 +61,19 @@
             {% endif %}
   </nav>
 <div style="padding-top: 70px">
-
+{#<div class="blur">#}
+{#        <img src="{% static 'img/BMSTU.jpg' %}" style="width: 100%; height: 90%; position: fixed; margin-top: -10px;">#}
+{#        </div>#}
 {% block main_block %}
     {% if not user.is_authenticated %}
-        <div class="blur"">
-        <img src="{% static 'img/BMSTU.jpg' %}" style="width: 100%; height: 90%; position: fixed; margin-top: -10px; z-index: -100">
-        </div>
-         <p class="flow-text" style="margin-left: 12px">Зарегистрируйтесь или войдите в систему</p>
+
+         <p style="margin-left: 12px; font-size: 30px; color: black; margin-left: 70px">Зарегистрируйтесь или войдите в систему</p>
         {% else %}
-<div class="blur">
-        <img src="{% static 'img/BMSTU.jpg' %}" style="width: 100%; height: 90%; position: fixed; margin-top: -10px;">
-        </div>
+        <img src="{% static 'img/BMSTU.jpg' %}" style="width: 100%; height: 130%; position: fixed; margin-top: -10px;">
     {% endif %}
 {% endblock %}
 
-  <footer class="page-footer" style="background-color: #8d48ff;">
+  <footer class="page-footer">
           <div class="container">
             <div class="row">
               <div class="col l6 s12">

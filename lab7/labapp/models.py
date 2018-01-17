@@ -10,7 +10,7 @@ class Teacher(models.Model):
     phone = models.BigIntegerField()
     description=models.CharField(max_length=1000)
     mail = models.CharField(max_length=30)
-    img = models.FileField(upload_to='images')
+    img = models.FileField(upload_to='images', default='img/def.jpg')
 
 class Pulpit(models.Model):
     name = models.CharField(max_length=5)

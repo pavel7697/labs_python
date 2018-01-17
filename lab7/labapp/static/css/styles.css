@@ -1,8 +1,8 @@
 /*@import colors_palete;*/
 body {
 	background: -webkit-linear-gradient(top, #c9d5f5 0%, #c2abdb 50%, #a144d1 51%, #fefefe 100%);
-	background: no-repeat;
-	background-color: #c9d5f5;
+	background-size: 100%, 100%;
+	background-image: url('../img/BMSTU1.jpg');
 }
 .col-sm-3 control-label {
 	color: #000000;

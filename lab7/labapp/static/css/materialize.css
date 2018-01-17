@@ -2881,7 +2881,7 @@ ul.staggered-list li {
 .page-footer {
   padding-top: 20px;
   color: #fff;
-  background-color: #ee6e73;
+  background-color: rgba(141,75,255,0.8);
   flex: 0 0 auto;
   position: fixed;
   left: 0;
@@ -4728,7 +4728,7 @@ small {
 .card {
   position: relative;
   margin: 0.5rem 0 0.6rem 0;
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.25);
   -webkit-transition: -webkit-box-shadow .25s;
   transition: -webkit-box-shadow .25s;
   transition: box-shadow .25s;
