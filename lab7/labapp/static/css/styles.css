@@ -1,5 +1,7 @@
 /*@import colors_palete;*/
 body {
+	background: -webkit-linear-gradient(top, #c9d5f5 0%, #c2abdb 50%, #a144d1 51%, #fefefe 100%);
+	background: no-repeat;
 	background-color: #c9d5f5;
 }
 .col-sm-3 control-label {
@@ -15,18 +17,34 @@ body {
 }
 
 .btn{
-	background-color: wheat;
+	background-color: #cc95ff;
 	border-color: black;
 	color: black;
 	;
 }
 
 .btn:hover{
-	background-color: coral;
+	background-color: #cc66ff;
 	border-color: black;
 	color: black;
 	;
 }
 
+ body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
 
+  main {
+    flex: 1 0 auto;
+  }
+
+  .blur {
+	  -webkit-filter: blur(5px);
+     -moz-filter: blur(5px);
+       -o-filter: blur(5px);
+      -ms-filter: blur(5px);
+          filter: blur(5px);
+  }
 

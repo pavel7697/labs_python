@@ -6,20 +6,13 @@
 {% endblock %}
 {% block main_block %}
 {% for pulpit in pulpits %}
-         <div class="col s12 m7" style="margin: 10px; width: 40%">
-    <h2 class="header"></h2>
+         <div class="col s12 m7" style="margin-left: 10px; width: 60%">
     <div class="card horizontal">
-      <div class="card-image">
-        <img src="http://s.picture-russia.ru/wpic/l/2/c/2ccaea7b983f9e5076b9b769b80ffe55.jpg" style="height: 150px">
-      </div>
-      <div class="card-stacked">
         <div class="card-content">
-            <p style="font-size: 30px">Название: {{ pulpit.name }}</p>
-            <p style="font-size: 30px">Год основания: {{ pulpit.year }}</p>
+            <a href="/labs/pulpit/{{ pulpit.id }}"><p style="font-size: 25px"><b>{{ pulpit.name }}</b></p></a>
+            <p style="font-size: 20px" ><b>{{ pulpit.info }}</b></p>
+            <p style="font-size: 15px"><b>Год основания:</b> {{ pulpit.year }}</p>
         </div>
-        <div class="card-action">
-        </div>
-      </div>
     </div>
   </div>
 {%  empty %}
@@ -27,4 +20,50 @@
         <h2>Не найдено ни одной кафедры :(</h2>
     </div>
 {% endfor %}
+    <div class="pagination">
+        {% if paginator.num_pages > 1 %}
+            {% if page_obj.has_previous %}
+                <li class="waves-effect"><a href="?page={{ page_obj.previous_page_number }}"><i class="material-icons">chevron_left</i></a></li>
+                {% else %}
+                <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+            {% endif %}
+            {% for item in mass %}
+                {% if item == page_obj.number %}
+                    <li class="active"><a href="?page={{ item }}">{{ item}}</a></li>
+                    {% else %}
+                        <li class="waves-effect"><a href="?page={{ item }}">{{ item}}</a></li>
+                {% endif %}
+            {% endfor %}
+            {% if page_obj.has_next %}
+                <li class="waves-effect"><a href="?page={{ page_obj.next_page_number }}"><i class="material-icons">chevron_right</i></a></li>
+                {% else %}
+                <li class="disabled"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+            {% endif %}
+        {% endif %}
+
+    </div>
+    <footer class="page-footer" style="background-color: #8d48ff;">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Footer Content</h5>
+                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="/labs/">Новости</a></li>
+                  <li><a class="grey-text text-lighten-3" href="/labs/logout">Выйти</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2018 Copyright
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+          </div>
+        </footer>
+
 {% endblock %}

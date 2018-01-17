@@ -2693,7 +2693,8 @@ video.responsive-video {
 }
 
 .pagination li.active {
-  background-color: #ee6e73;
+  background-color: #cc66ff;
+  margin-bottom: 15px;
 }
 
 .pagination li.disabled a {
@@ -2881,6 +2882,12 @@ ul.staggered-list li {
   padding-top: 20px;
   color: #fff;
   background-color: #ee6e73;
+  flex: 0 0 auto;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 130px;
 }
 
 .page-footer .footer-copyright {
@@ -2897,6 +2904,11 @@ ul.staggered-list li {
   padding: 10px 0px;
   color: rgba(255, 255, 255, 0.8);
   background-color: rgba(51, 51, 51, 0.08);
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 2000;
 }
 
 table, th, td {
@@ -3367,8 +3379,8 @@ nav ul a span.badge {
 
 .container {
   margin: 0 auto;
-  max-width: 1280px;
-  width: 90%;
+  max-width: 1600px;
+  width: 100%;
 }
 
 @media only screen and (min-width: 601px) {
@@ -4715,13 +4727,13 @@ small {
 
 .card {
   position: relative;
-  margin: 0.5rem 0 1rem 0;
-  background-color: #fff;
+  margin: 0.5rem 0 0.6rem 0;
+  background-color: #ffffff;
   -webkit-transition: -webkit-box-shadow .25s;
   transition: -webkit-box-shadow .25s;
   transition: box-shadow .25s;
   transition: box-shadow .25s, -webkit-box-shadow .25s;
-  border-radius: 2px;
+  border-radius: 7px;
 }
 
 .card .card-title {
@@ -4767,7 +4779,7 @@ small {
 }
 
 .card.large {
-  height: 500px;
+  height: 700px;
 }
 
 .card.horizontal {
@@ -4792,7 +4804,7 @@ small {
 }
 
 .card.horizontal .card-image img {
-  border-radius: 2px 0 0 2px;
+  border-radius: 7px 0 0 7px;
   max-width: 100%;
   width: auto;
 }
@@ -4846,7 +4858,7 @@ small {
 }
 
 .card .card-image .card-title {
-  color: #fff;
+  color: #c9d5f5;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -5062,12 +5074,12 @@ small {
 
 .tabs .tab a:hover, .tabs .tab a.active {
   background-color: transparent;
-  color: #ee6e73;
+  color: #cc66ff;
 }
 
 .tabs .tab.disabled a,
 .tabs .tab.disabled a:hover {
-  color: rgba(238, 110, 115, 0.7);
+  color: rgba(204, 102, 255, 0.7);
   cursor: default;
 }
 
@@ -5075,7 +5087,7 @@ small {
   position: absolute;
   bottom: 0;
   height: 2px;
-  background-color: #f6b2b5;
+  background-color: #cc95ff;
   will-change: left, right;
 }
 
@@ -6390,7 +6402,7 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
 }
 
 .input-field .prefix.active {
-  color: #26a69a;
+  color: #cc95ff;
 }
 
 .input-field .prefix ~ input,
@@ -7335,13 +7347,13 @@ input[type=range]:focus::-ms-fill-upper {
 .table-of-contents a:hover {
   color: #a8a8a8;
   padding-left: 19px;
-  border-left: 1px solid #ee6e73;
+  border-left: 1px solid #cc66ff;
 }
 
 .table-of-contents a.active {
   font-weight: 500;
   padding-left: 18px;
-  border-left: 2px solid #ee6e73;
+  border-left: 2px solid #cc66ff;
 }
 
 .side-nav {
@@ -8309,10 +8321,19 @@ input[type=range]:focus::-ms-fill-upper {
   visibility: visible;
   -webkit-animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
           animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
-  -webkit-transition: opacity .3s, visibility 0s 1s, -webkit-transform .3s;
-  transition: opacity .3s, visibility 0s 1s, -webkit-transform .3s;
-  transition: opacity .3s, transform .3s, visibility 0s 1s;
-  transition: opacity .3s, transform .3s, visibility 0s 1s, -webkit-transform .3s;
+  -webkit-transition: opacity .3s,
+ visibility 0s 1s,
+ -webkit-transform .3s;
+  transition: opacity .3s,
+ visibility 0s 1s,
+ -webkit-transform .3s;
+  transition: opacity .3s,
+ transform .3s,
+ visibility 0s 1s;
+  transition: opacity .3s,
+ transform .3s,
+ visibility 0s 1s,
+ -webkit-transform .3s;
 }
 
 .tap-target {
@@ -8365,10 +8386,19 @@ input[type=range]:focus::-ms-fill-upper {
 
 .tap-target-wave::after {
   visibility: hidden;
-  -webkit-transition: opacity .3s, visibility 0s, -webkit-transform .3s;
-  transition: opacity .3s, visibility 0s, -webkit-transform .3s;
-  transition: opacity .3s, transform .3s, visibility 0s;
-  transition: opacity .3s, transform .3s, visibility 0s, -webkit-transform .3s;
+  -webkit-transition: opacity .3s,
+ visibility 0s,
+ -webkit-transform .3s;
+  transition: opacity .3s,
+ visibility 0s,
+ -webkit-transform .3s;
+  transition: opacity .3s,
+ transform .3s,
+ visibility 0s;
+  transition: opacity .3s,
+ transform .3s,
+ visibility 0s,
+ -webkit-transform .3s;
   z-index: -1;
 }
 
@@ -9386,4 +9416,7 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   stroke-width: 4;
   stroke-linecap: round;
   /*shape-rendering: crispEdges;*/
+}
+div#dedcription > p {
+  margin-top: 7px;
 }

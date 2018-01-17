@@ -6,24 +6,77 @@
 {% endblock %}
 {% block main_block %}
 {% for teacher in teachers %}
-      <div class="col s12 m7" style="margin: 10px; width: 40%;">
+      <div class="col s12 m7" style="margin-left: 10px; width: 50%;">
     <div class="card horizontal" style=" height: 160px">
       <div class="card-image">
-        <img src="http://s.picture-russia.ru/wpic/l/2/c/2ccaea7b983f9e5076b9b769b80ffe55.jpg" style="height: 160px">
+        <a href="/labs/teachers/{{ teacher.id }}"><img src="{{ teacher.img.url }}" style="height: 160px" ></a>
       </div>
       <div class="card-stacked">
         <div class="card-content" style="margin-top: 1px">
             <p style="font-size: 25px"><b>{{ teacher.second_name }} {{ teacher.name }} {{ teacher.third_name }}</b></p>
           <p>Контактный телефон: {{ teacher.phone }}</p>
             <p>e-mail: {{ teacher.mail }}</p>
+
         </div>
         </div>
       </div>
     </div>
   </div>
+
 {%  empty %}
     <div class="main_block_elem">
         <h2>Не найдено ни одного препода</h2>
     </div>
 {% endfor %}
+      <div class="card">
+          <a href="/labs/add_teacher" class="btn-floating btn-large halfway-fab waves-effect waves-light red"><i class="material-icons" style="background-color: #cc66ff">add</i></a>
+      </div>
+    <div class="pagination">
+        {% if paginator.num_pages > 1 %}
+            {% if page_obj.has_previous %}
+                <li class="waves-effect"><a href="?page={{ page_obj.previous_page_number }}"><i class="material-icons">chevron_left</i></a></li>
+                {% else %}
+                <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+            {% endif %}
+            {% for item in mass %}
+                {% if item == page_obj.number %}
+                    <li class="active"><a href="?page={{ item }}">{{ item}}</a></li>
+                    {% else %}
+                        <li class="waves-effect"><a href="?page={{ item }}">{{ item}}</a></li>
+                {% endif %}
+            {% endfor %}
+            {% if page_obj.has_next %}
+                <li class="waves-effect"><a href="?page={{ page_obj.next_page_number }}"><i class="material-icons">chevron_right</i></a></li>
+                {% else %}
+                <li class="disabled"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+            {% endif %}
+        {% endif %}
+
+    </div>
+{#<footer class="page-footer" style="background-color: #8d48ff;">#}
+{#          <div class="container">#}
+{#            <div class="row">#}
+{#              <div class="col l6 s12">#}
+{#                <h5 class="white-text">Footer Content</h5>#}
+{#                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>#}
+{#              </div>#}
+{#              <div class="col l4 offset-l2 s12">#}
+{#                <h5 class="white-text">Links</h5>#}
+{#                <ul>#}
+{#                  <li><a class="grey-text text-lighten-3" href="/labs/">Новости</a></li>#}
+{#                  <li><a class="grey-text text-lighten-3" href="/labs/logout">Выйти</a></li>#}
+{#                </ul>#}
+{#              </div>#}
+{#            </div>#}
+{#          </div>#}
+{#          <div class="footer-copyright">#}
+{#            <div class="container">#}
+{#            © 2018 Copyright#}
+{#            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>#}
+{#            </div>#}
+{#          </div>#}
+{#        </footer>#}
+
 {% endblock %}
+
+

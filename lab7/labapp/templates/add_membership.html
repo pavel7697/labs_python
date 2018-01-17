@@ -1,0 +1,16 @@
+{% extends "test.html" %}
+
+{% block main_block %}
+<div class="main_block_elem">
+<form enctype="multipart/form-data" method="POST" class="form-horizontal">
+    <h2 style="text-align:center">Регистрация пользователя</h2>
+    {% csrf_token %}
+<br>
+    <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-9" style="margin-left:5%; width: 50%">
+            <button type="submit" class="waves-effect waves-light btn-large" style="background-color: #CC66FF">Добавить</button>
+        </div>
+    </div>
+</form>
+</div>
+{% endblock %}

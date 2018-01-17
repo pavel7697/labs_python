@@ -2,7 +2,14 @@
   <html>
     <head>
         {% load static %}
+        <link rel="icon" href="{% static 'img/favicon.ico'%}">
         <title>{% block title %}МГТУ{% endblock %}</title>
+         <style>
+           body {
+            background-image: url({% static 'img/BMSTU.jpg' %});
+            background: no-repeat;
+           }
+          </style>
       <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
@@ -29,8 +36,8 @@
 {#    <div id="test4" class="col s12">Test 4</div>#}
 {#  </div>#}
 
-  <nav>
-        <div class="nav-wrapper" style="background-color: #cc66ff">
+  <nav style="position: fixed; z-index: 1030;">
+        <div class="nav-wrapper" style="background-color: #8d48ff">
           <a href="{% url 'index' %}" class="brand-logo center">МГТУ им Н.Э.Баумана</a>
             {% if user.is_authenticated %}
                 <a class="brand-logo right">
@@ -38,8 +45,7 @@
                     <a class="brand-logo right" style="margin-right: 70px">{{ user.username }}</a></a>
           <ul class="left hide-on-med-and-down">{% block active %}
               <li><a href="{% url 'teacher_list'%}">Преподаватели</a></li>
-              <li><a href="{% url 'pulpit_list'%}">Кафедры</a></li>
-              <li><a href="{% url 'graph'%}">График</a></li>{% endblock %}
+              <li><a href="{% url 'pulpit_list'%}">Кафедры</a></li>{% endblock %}
           </ul>
 
              <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -54,29 +60,56 @@
                              </ul>
             {% endif %}
   </nav>
+<div style="padding-top: 70px">
+
 {% block main_block %}
     {% if not user.is_authenticated %}
+        <div class="blur"">
+        <img src="{% static 'img/BMSTU.jpg' %}" style="width: 100%; height: 90%; position: fixed; margin-top: -10px; z-index: -100">
+        </div>
          <p class="flow-text" style="margin-left: 12px">Зарегистрируйтесь или войдите в систему</p>
         {% else %}
-        <p class="flow-text" style="margin-left: 12px">Свежие новости</p>
-              {% for a in mass %}
-{#      <div class="col s12 m5" style="margin-left: 12px; width: 60%; ">#}
-{#        <div class="card-panel teal">#}
-{#          <span class="white-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.#}
-{#          </span>#}
-{#        </div>#}
-{#      </div>#}
-{#    </div>#}
-                  <ul class="collapsible popout" data-collapsible="accordion" style="width: 60%; margin-left: 1%">
-    <li>
-      <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-  </ul>
-              {% endfor %}
+<div class="blur">
+        <img src="{% static 'img/BMSTU.jpg' %}" style="width: 100%; height: 90%; position: fixed; margin-top: -10px;">
+        </div>
     {% endif %}
 {% endblock %}
 
+  <footer class="page-footer" style="background-color: #8d48ff;">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text" style="margin: -5px">BMSTU</h5>
+                <p class="grey-text text-lighten-4">105005, Москва, 2-я Бауманская ул., д. 5, стр. 1</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                  {% if user.is_authenticated %}
+                    <ul class="list-inline">
+                        <a class="j-padd-0"><a href="https://www.facebook.com/bmstu1830/"><img style="width: 30px; height: 30px" src="{% static 'img/fb.png'%}"></a>&nbsp;</a>
+						<a class="j-padd-0"><a href="http://www.youtube.com/user/TVbaumanka"><img style="width: 30px; height: 30px" src="{% static 'img/youtube.png'%}"></a>&nbsp;</a>
+                        <a class="j-padd-0"><a href="http://vk.com/pr.bmstu"><img style="width: 30px; height: 30px" src="{% static 'img/vk.png'%}"></a>&nbsp;</a>
+					</ul>
+                <ul>
+                </ul>
+                      <div class="footer-copyright">
+            <div class="container">
+            © 2018 Copyright
+            <a class="grey-text text-lighten-4 right" href="/labs/logout">Выйти</a>
+            </div>
+          </div>
+                  {% else %}
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2018 Copyright
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+          </div>
+        </footer>
+
+    {% endif %}
       <!--Import jQuery before materialize.js-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.js"></script>
       {% load static %}
@@ -85,6 +118,12 @@
     $('.collapsible').collapsible();
   });
       </script>
+<script type="text/javascript" src={% static "js/materialize.js" %}>
+        $(document).ready(function(){
+      $('.parallax').parallax();
+    });
+      </script>
     <script type="text/javascript" src={% static "js/index.js" %}></script>
+
     </body>
   </html>

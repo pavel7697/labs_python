@@ -6,6 +6,10 @@ from django.contrib.auth import authenticate,login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import  *
+from . import models
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.views.generic import DetailView
+from datetime import datetime, date, time
 
 class TeacherList(LoginRequiredMixin, ListView):
     context_object_name = 'teachers'
@@ -13,6 +17,22 @@ class TeacherList(LoginRequiredMixin, ListView):
     redirect_field_name = 'redirect_to'
     model = Teacher
     template_name = 'teacher_list.html'
+    paginate_by = 4
+
+    def get_context_data(self, **kwargs):
+        context = super(TeacherList, self).get_context_data(**kwargs)
+        a=0
+        for i in Teacher.objects.all():
+            a+=1
+        if (a%4 >0):
+            c=int((a//4)+1)
+        else:
+            c=int(a/4)
+        mass = []
+        for j in range(c):
+            mass.append(j+1)
+        context['mass']=mass
+        return context
 class NewsList( ListView):
     context_object_name = 'news'
     model= Teacher
@@ -21,7 +41,22 @@ class PulpitList(ListView):
     context_object_name = 'pulpits'
     model = Pulpit
     template_name = 'pulpit_list.html'
+    paginate_by = 5
 
+    def get_context_data(self, **kwargs):
+        context = super(PulpitList, self).get_context_data(**kwargs)
+        a=0
+        for i in Pulpit.objects.all():
+            a+=1
+        if (a%5 >0):
+            c=int((a//5)+1)
+        else:
+            c=int(a/5)
+        mass = []
+        for j in range(c):
+            mass.append(j+1)
+        context['mass']=mass
+        return context
 
 def registration_dumb(request):
     errors = {}
@@ -155,12 +190,71 @@ class AutorizationForm(forms.Form):
     pass
 
 def index(request):
-    mass = [ i for i in range(1, 10)]
+    mass = [ i for i in range(1, 20)]
     return render(request, 'test.html', {'mass': mass})
+def index2(request):
+    return HttpResponseRedirect('/labs/')
 def graph(request):
     return render(request,'index(1).html')
 
+class TeacherAddForm(forms.ModelForm):
+    name = forms.CharField(min_length=2, label='Имя')
+    second_name = forms.CharField(label='Фамилия')
+    third_name = forms.CharField(label='Отчество')
+    phone = forms.IntegerField(label='Телефон')
+    mail = forms.EmailField(label='e-mail')
+    img = forms.FileField(label='Фото', required=False)
+    description=forms.CharField(label='Информация', required=False)
+    class Meta:
+        model=models.Teacher
+        fields = ('name', 'second_name','third_name', 'phone', 'mail', 'img')
 
 
+def add_teacher(request):
+    if request.method == 'POST':
+        form = TeacherAddForm(request.POST, request.FILES)
+        is_val = form.is_valid()
+        data = form.cleaned_data
+        if (Teacher.objects.filter(name=data['name']).exists())&(Teacher.objects.filter(name=data['second_name']).exists())&(Teacher.objects.filter(name=data['third_name']).exists()):
+            form.add_error('name',['Этот преподаватель уже существует'])
+            is_val = False
 
+        if is_val:
+            data = form.cleaned_data
+            form.save()
+            return HttpResponseRedirect('/labs/teachers')
+    else:
+        form = TeacherAddForm()
 
+    return render(request, 'add_teacher.html',{'form':form})
+
+class teacher_view(DetailView):
+    model = Teacher
+    context_object_name = 'teacher'
+    template_name = 'teacher_view.html'
+
+def footer_view(request):
+    return render(request, 'footer.html')
+
+class pulpit_view(DetailView):
+    model = Pulpit
+    context_object_name = 'pulpit'
+    template_name = 'pulpit_view.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(pulpit_view, self).get_context_data(**kwargs)
+        context['teacher'] = Teacher.objects.all()
+        context['membership'] = Membership.objects.all()
+        context['pulpits'] = Pulpit.objects.all()
+        # print(context)
+        return context
+
+def add_membership(request, ded_id, pulpit_id):
+    if request.method == "POST":
+        rev = Membership()
+        rev.teacher_id = ded_id
+        rev.pulpit_id = pulpit_id
+        rev.save()
+        return HttpResponseRedirect('/labs/pulpit/' + pulpit_id)
+
+    return render(request, 'add_membership.html')

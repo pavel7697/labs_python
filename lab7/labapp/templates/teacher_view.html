@@ -1,0 +1,52 @@
+{% extends "test.html" %}
+{% block title %}{% endblock %}
+{% block active %}
+     <li class="active"><a href="{% url 'teacher_list'%}">Преподаватели</a></li>
+     <li><a href="{% url 'pulpit_list'%}">Кафедры</a></li>
+{% endblock %}
+{% block main_block %}
+      <div class="col s12 m7" style="margin: 10px; padding-right: 40px; height: 10%; width: 100%">
+    <div class="card horizontal large" style="margin: 10px; width: 100%; max-width:100%">
+      <div class="card-image">
+        <img class="responsive-img" src="{{ teacher.img.url }}" >
+      </div>
+      <div class="card-stacked" style="margin: 10px">
+        <div class="card-content" style="margin-top: 1px">
+            <p style="font-size: 30px; "><b>{{ teacher.second_name }} {{ teacher.name }} {{ teacher.third_name }}</b></p>
+            <div id="dedcription">
+                <p><b>Контактный телефон:</b> {{ teacher.phone }}</p>
+          <p><b>e-mail: </b>{{ teacher.mail }}</p>
+                <p><b>Информация: </b>{{ teacher.description }}</p>
+            </div>
+        </div>
+        </div>
+      </div>
+      </div>
+    <footer class="page-footer" style="background-color: #8d48ff;">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Footer Content</h5>
+                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="/labs/">Новости</a></li>
+                  <li><a class="grey-text text-lighten-3" href="/labs/logout">Выйти</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2018 Copyright
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+          </div>
+        </footer>
+
+{% endblock %}
+
+
+

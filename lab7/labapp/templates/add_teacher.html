@@ -1,0 +1,30 @@
+﻿{% extends "test.html" %}
+
+{% block main_block %}
+<div class="main_block_elem">
+<form enctype="multipart/form-data" method="POST" class="form-horizontal">
+    <h2 style="text-align:center">Регистрация пользователя</h2>
+    {% csrf_token %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger" role="alert">{{ error }}</div>
+        {% endfor %}
+    {% endfor %}
+
+    {% for field in form %}
+    <div class="form-group" style="margin-left:5%; width: 50%; ">
+        <label for="{{ field.id_for_label }}" class="col-sm-3 control-label" style="border-color: #3e2723; color: #000000">{{ field.label }}:</label>
+        <div class="col-sm-9">
+            {{ field }}
+        </div>
+    </div>
+    {% endfor %}
+<br>
+    <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-9" style="margin-left:5%; width: 50%">
+            <button type="submit" class="waves-effect waves-light btn-large" style="background-color: #CC66FF">Добавить</button>
+        </div>
+    </div>
+</form>
+</div>
+{% endblock %}
