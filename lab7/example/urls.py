@@ -26,6 +26,5 @@ urlpatterns = [
     url(r'^$', views.index2, name='index2'),
     url(r'^labs/', include('labapp.urls')),
     url(r'^admin/', admin.site.urls),
-    url(r'^footer/$', views.footer_view, name='footer'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

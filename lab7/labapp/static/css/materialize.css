@@ -5742,7 +5742,7 @@ button.btn-floating {
   -webkit-tap-highlight-color: transparent;
   line-height: 1.5;
   padding: 1rem;
-  background-color: #fff;
+  background-color: rgba(255,255,255,0.5);
   border-bottom: 1px solid #ddd;
 }
 

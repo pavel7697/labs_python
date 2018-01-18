@@ -22,11 +22,37 @@ class UserAdmin(admin.ModelAdmin):
 
 @admin.register(Pulpit)
 class PulpitAdmin(admin.ModelAdmin):
+    list_display = ('name','year','zav','info',)
+    list_filter = ('year',)
+    search_fields = ['name', 'info', 'zav']
     empty_value_display = '-empty-'
+
+    def pulpit_name(self, obj):
+        return "{} - {}".format(obj.pulpit.name, obj.pulpit.info)
 
 @admin.register(Teacher)
 class PulpitAdmin(admin.ModelAdmin):
+    list_display = ('teacher_name', 'phone', 'mail', 'description',)
+    list_filter = ('second_name', 'name')
+    search_fields = ['name', 'second_name']
     empty_value_display = '-empty-'
+
+    def teacher_name(self, obj):
+        return "{} {} {}".format(obj.second_name, obj.name, obj.third_name)
+
+    def teacher_info(self, obj):
+        return "{} {} {}".format(obj.teacher.phone, obj.teacher.mail, obj.teacher.description)
 # @admin.register(Review)
 # class ReviewAdmin(admin.ModelAdmin):
 #     empty_value_display = '-empty-'
+
+@admin.register(Membership)
+class MemberAdmin(admin.ModelAdmin):
+    list_display = ('teachername', 'pulpitinfo',)
+    empty_value_display = '-empty-'
+
+    def teachername(self, obj):
+        return "{} {} {}".format(obj.teacher.second_name, obj.teacher.name, obj.teacher.third_name)
+
+    def pulpitinfo(self, obj):
+        return "{} - {}".format(obj.pulpit.name, obj.pulpit.info)

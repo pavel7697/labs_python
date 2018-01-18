@@ -233,9 +233,6 @@ class teacher_view(DetailView):
     context_object_name = 'teacher'
     template_name = 'teacher_view.html'
 
-def footer_view(request):
-    return render(request, 'footer.html')
-
 class pulpit_view(DetailView):
     model = Pulpit
     context_object_name = 'pulpit'
@@ -246,7 +243,17 @@ class pulpit_view(DetailView):
         context['teacher'] = Teacher.objects.all()
         context['membership'] = Membership.objects.all()
         context['pulpits'] = Pulpit.objects.all()
-        # print(context)
+        a = 0
+        for i in Teacher.objects.all():
+            a += 1
+        if (a % 3 > 0):
+            c = int((a // 3) + 1)
+        else:
+            c = int(a / 3)
+        mass = []
+        for j in range(c):
+            mass.append(j + 1)
+        context['mass'] = mass
         return context
 
 def add_membership(request, ded_id, pulpit_id):

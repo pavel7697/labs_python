@@ -5,18 +5,22 @@
      <li class="active"><a href="{% url 'pulpit_list'%}">Кафедры</a></li>
 {% endblock %}
 {% block main_block %}
-            <p style="font-size: 30px; margin-left: 10px"><b>{{ pulpit.name }}</b>-{{ pulpit.info }}</p>
-            <div id="dedcription" style="margin-left: 10px">
-                <p><b>Год основания:</b> {{ pulpit.year }}</p>
-                <p><b>Заведующий: </b>{{ pulpit.zav }}</p>
-{#                <p><b>Информация: </b>{{ pulpit.description }}</p>#}
-            </div>
-            <ul id="dropdown2" class="dropdown-content">
-                {% for ded in teacher %}
-                    <li><a href='/labs/add_membership/{{ ded.id }}/{{ pulpit.id }}'>{{ ded.second_name }} {{ ded.name }} {{ ded.third_name }}</a></li>
-             {% endfor %}
-            </ul>
-  <a class="btn dropdown-button"style="margin-top: 20px" href="#!" data-activates="dropdown2">Добавить<i class="material-icons">add</i></a>
+    <div>
+            <p style="font-size: 30px; margin-left: 50px; margin-top: 0px; padding-top: 5px"><b>{{ pulpit.name }}</b> - {{ pulpit.info }}</p>
+            <div id="dedcription" style="margin-left: 10px; padding-top: 0px">
+                <div class ="row" style="margin-left: 40px; margin-top: 0px; padding-top: 0px">
+                    <DIV CLASS="col s2 m6 l1"><p><b>Год основания:</b> {{ pulpit.year }}</p></div>
+                    <div class ="col s2 m6 l1"><p><b>Заведующий: </b>{{ pulpit.zav }}</p></div>
+                    <div class="col s2 m6 l7">
+                        <ul id="dropdown2" class="dropdown-content">
+                            {% for ded in teacher %}
+                                <li><a href='/labs/add_membership/{{ ded.id }}/{{ pulpit.id }}'>{{ ded.second_name }} {{ ded.name }} {{ ded.third_name }}</a></li>
+                         {% endfor %}
+                        </ul>
+                        <a class="btn dropdown-button"style="margin-top: 20px" href="#!" data-activates="dropdown2">Добавить<i class="material-icons">add</i></a>
+                    </div>
+                    </div>
+
                 <div class = pulpit_reviews>
                     {% for zap in membership %}
                         {% if zap.pulpit_id == pulpit.id %}
@@ -28,7 +32,7 @@
                                         <li>
                                           <div class="collapsible-header">
                                                   <a href="/labs/teachers/{{ ded.id }}"><img src="{{ ded.img.url }}" class="circle responsive-img" style="height: 100px; width: 100px" ></a>
-                                              <p style="font-size: 25px"><b>{{ ded.second_name }} {{ ded.name }} {{ ded.third_name }}</b></p></div>
+                                              <p style="font-size: 25px; margin-left: 20px"><b>{{ ded.second_name }} {{ ded.name }} {{ ded.third_name }}</b></p></div>
                                           <div class="collapsible-body"><span>
                                               <p>Контактный телефон: {{ ded.phone }}</p>
                                                 <p>e-mail: {{ ded.mail }}</p></span></div>
@@ -43,7 +47,7 @@
                     {% endfor %}
 
 
-
+</div>
 
 {% endblock %}
 
